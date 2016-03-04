@@ -55,7 +55,7 @@ public:
     //
     // 魚系
     int mode;
-    ofImage end,same,neko;
+    ofImage end,same,neko,back,last;
     float imgX, imgY;
     
     float n,nn;

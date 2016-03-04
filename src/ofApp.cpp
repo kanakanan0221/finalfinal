@@ -6,6 +6,8 @@ using namespace std;
 //--------------------------------------------------------------
 void ofApp::setup(){
     
+    
+    
     ofSetVerticalSync(true);
     ofSetFrameRate(60);
     ofBackground(0, 0, 0);
@@ -72,14 +74,15 @@ void ofApp::setup(){
     font1.loadFont("Hanzipen.ttc", 50);
     font2.loadFont("Hanzipen.ttc", 50);
 
-    
-    
+    last.loadImage("mozi2.png");
+    back.loadImage("029.jpeg");
     
     
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
+    
     
     simpleHands = leap.getSimpleHands();
     if (leap.isFrameNew() && simpleHands.size() ) {
@@ -193,7 +196,7 @@ void ofApp::draw(){
                         cout << "finger7-x:"<<fingerPos.at(7).x<<endl;
                         cout << "finger7-y:"<<fingerPos.at(7).y<<endl;
                         if (change == true) {
-//                           ofDisableDepthTest();
+//                         ofDisableDepthTest();
                             
                           ofSetColor(255);
 
@@ -223,7 +226,7 @@ void ofApp::draw(){
                         //                        else{
                         //                            manbo.draw(0,0,manbo.getWidth(), manbo.getHeight());
                         //                        }
-                        
+                        ofSetColor(255);
                                                 ofSetColor(0, 255, 0);
                                                 ofDrawSphere(handPos.at(i), 20);
                         
@@ -256,19 +259,27 @@ void ofApp::draw(){
                 
             }
             if (mode == 1){
-                ofSetColor(255);
-                end.draw(0,-300,ofGetWidth()/2, ofGetHeight()/2*1.5);
-                ofSetColor(255, 255, 0);
                 
-                 ofPushMatrix();
-                ofRotateZ(180);
-                font1.drawString(L"マンボウよりも", -100, -200);
-                ofPopMatrix();
+                ofSetColor(255);
+                end.draw(-200,-240,ofGetWidth()/2, ofGetHeight()/2*1.5);
+//                ofSetColor(255);
+                
+                last.draw(-500, -400, ofGetWidth(), ofGetHeight()*0.2);
+                
 
-                ofPushMatrix();
-                ofRotateZ(180);
-                font2.drawString(L"あなたは強い...", -200, -280);
-                ofPopMatrix();
+              ofSetColor(255, 255, 0);
+//                ofSetColor(255);
+//                last.draw(-100, -400, ofGetWidth(), ofGetHeight());
+//                
+//                 ofPushMatrix();
+////                ofRotateZ(180);
+//                font1.drawString(L"<<<とつぜん　の　し>>>", -100, -100);
+//                ofPopMatrix();
+
+//                ofPushMatrix();
+//                ofRotateZ(180);
+//                font2.drawString(L"あなたは強い...", -200, -280);
+//                ofPopMatrix();
 
             
 
@@ -284,7 +295,12 @@ void ofApp::draw(){
             }
                    }
     }
-    cam.end();
+        cam.end();
+    
+    back.draw(0,0,ofGetWidth(),ofGetHeight());
+    
+    
+
     
     //    same.draw(rectangle);
     //
